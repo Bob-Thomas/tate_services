@@ -7,6 +7,9 @@ class Quotation(db.Model):
     artifact = db.Column(db.Integer, db.ForeignKey('artifact.id',
                                                    onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
 
-    def __init__(self, information=None, artifact=None):
-        self.information = information
-        self.artifact = artifact
+    # def __init__(self, information=None, artifact=None):
+    #     self.information = information
+    #     self.artifact = artifact
+
+    def __unicode__(self):
+        return self.id

@@ -8,7 +8,10 @@ class Agreement(db.Model):
                                                    onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-    def __init__(self, information=None, artifact=None, price=None):
-        self.information = information
-        self.artifact = artifact
-        self.price = price
+    # def __init__(self, information=None, artifact=None, price=None):
+    #     self.information = information
+    #     self.artifact = artifact
+    #     self.price = price
+
+    def __unicode__(self):
+        return self.id

@@ -6,6 +6,9 @@ class Performance(db.Model):
     name = db.Column(db.String(90), nullable=False)
     information = db.Column(db.Text, nullable=False)
 
-    def __init__(self, name=None, information=None):
-        self.name = name
-        self.information = information
+    # def __init__(self, name=None, information=None):
+    #     self.name = name
+    #     self.information = information
+
+    def __unicode__(self):
+        return self.name

@@ -11,6 +11,19 @@ class User(db.Model):
     groups = db.relationship('UserGroups', lazy='dynamic')
     activated = db.Column(db.Boolean)
 
+        # Flask-Login integration
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.user_id
+
     # def __init__(self, email, password, firstname, lastname):
     #     self.email = email
     #     self.password = security.generate_password_hash(password, method='pbkdf2:sha256:2000', salt_length=8)
@@ -22,4 +35,4 @@ class User(db.Model):
         return security.check_password_hash(self.password, password)
 
     def __unicode__(self):
-        return self.firstname + " " + self.lastname
+        return self.first_name + " " + self.last_name
