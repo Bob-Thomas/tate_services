@@ -7,7 +7,10 @@ from flask.ext import login
 
 class InsurerView(ModelView):
     def is_accessible(self):
-        return login.current_user.is_authenticated()
+        print login.current_user.get_role()
+        return login.current_user.is_authenticated() and 'admin' in login.current_user.get_role()
 
     column_auto_select_related = True
     column_list = ('name', 'email', 'company')
+    form_excluded_columns = ('artifacts',)
+

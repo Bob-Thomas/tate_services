@@ -12,7 +12,11 @@ from request import Request
 from room import Room
 
 
-# db.drop_all()
+db.drop_all()
 db.create_all()
+
+
+db.session.add(User(email='smartcat007@hotmail.com', password='test', first_name='Bob', last_name='Thomas'))
+db.session.commit()
 
 

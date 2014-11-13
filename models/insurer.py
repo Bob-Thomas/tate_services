@@ -6,7 +6,7 @@ class Insurer(db.Model):
     name = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(200), nullable=False)
     company = db.Column(db.String(200), nullable=False)
-
+    artifacts = db.relation('InsuredArtifacts')
     # def __init__(self, name=None, email=None):
     #     self.name = name
     #     self.email = email

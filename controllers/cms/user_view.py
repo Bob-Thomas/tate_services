@@ -9,7 +9,7 @@ class UserView(ModelView):
         return login.current_user.is_authenticated()
 
     column_auto_select_related = True
-    column_list = ('first_name', 'last_name', 'email', 'groups')
+    column_list = ('first_name', 'last_name', 'email', 'activated', 'groups')
     column_searchable_list = ('first_name', 'last_name', 'email')
     column_filters = ('first_name', 'last_name', 'email', 'activated')
     form_columns = ('first_name', 'last_name', 'email', 'password', 'groups', 'activated')

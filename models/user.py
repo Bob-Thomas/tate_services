@@ -8,7 +8,7 @@ class User(db.Model):
     password = db.Column(db.Text)
     first_name = db.Column(db.Text)
     last_name = db.Column(db.Text)
-    groups = db.relationship('UserGroups', lazy='dynamic')
+    groups = db.relationship('UserGroups')
     activated = db.Column(db.Boolean)
 
         # Flask-Login integration
@@ -17,6 +17,12 @@ class User(db.Model):
 
     def is_active(self):
         return True
+
+    def get_roles(self):
+        roles = []
+        for group in self.groups:
+            roles.append(group.group.lower())
+        return roles
 
     def is_anonymous(self):
         return False

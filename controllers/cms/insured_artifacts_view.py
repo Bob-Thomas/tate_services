@@ -30,10 +30,11 @@ class InsuredArtifactsView(ModelView):
         'insurers': insurer_formatter,
         'artifacts': artifact_formatter
     }
-    can_create = False
+    #can_create = False
 
     def on_model_change(self, form, model, is_created):
-        artifact = Artifact.query.filter_by(id=model.artifact).first()
+        print str(form.artifacts).split('"')[7]
+        artifact = Artifact.query.filter_by(id=str(form.artifacts).split('"')[7]).first()
         artifact.insured = "YES"
         artifact.active = True
         db.session.commit()
