@@ -12,7 +12,7 @@ class TicketView(ModelView):
     column_auto_select_related = True
     column_list = ('first_name', 'last_name', 'email', 'purchase_date', 'visit_date')
     column_searchable_list = ('first_name', 'last_name', 'email')
-    column_filters = ('first_name', 'last_name', 'email')
+    column_filters = ('first_name', 'last_name', 'email', 'purchase_date')
     form_excluded_columns = ('first_name', 'last_name', 'birth_date')
     form_args = {
         'postal_code': {

@@ -18,10 +18,11 @@ class TicketApi(restful.Resource):
 
     def get(self):
         tickets = []
-        print self.ticket_controller.orders
-        for ticket in self.ticket_controller.orders:
-            print ticket
+        orders = self.ticket_controller.orders
+        print orders
+        for ticket in orders:
             tickets.append(self.ticket_controller.get_ticket_information(ticket))
+        self.ticket_controller.orders = []
         return tickets
 
     def post(self):
