@@ -5,6 +5,9 @@ from controllers.cms.adminIndex import CustomAdminIndexView
 from controllers.cms.file_admin import CustomFileAdmin
 from models.database import db
 
+from models.ticket import Ticket
+from ticket_view import TicketView
+
 from user_view import UserView
 from models.user import User
 
@@ -23,6 +26,7 @@ admin = Admin(name='Tate admin panel', index_view=CustomAdminIndexView(), base_t
 
 admin.add_view(UserView(User, db.session))
 admin.add_view(UserGroupsView(UserGroups, db.session))
+admin.add_view(TicketView(Ticket, db.session))
 admin.add_view(ArtifactView(Artifact, db.session))
 admin.add_view(InsurerView(Insurer, db.session))
 admin.add_view(InsuredArtifactsView(InsuredArtifacts, db.session))

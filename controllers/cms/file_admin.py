@@ -4,4 +4,4 @@ from flask.ext import login
 
 class CustomFileAdmin(FileAdmin):
     def is_accessible(self):
-        return login.current_user.is_authenticated()
+        return login.current_user.is_authenticated() and 'admin' in login.current_user.get_roles()
