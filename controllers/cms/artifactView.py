@@ -18,6 +18,8 @@ def prefix_name(obj, file_data):
 
 class ArtifactView(ModelView):
 
+    edit_template = "create.html"
+
     def is_accessible(self):
         return login.current_user.is_authenticated()
 
@@ -25,7 +27,7 @@ class ArtifactView(ModelView):
         if not model.image:
             return ''
         return Markup('<img src="%s">' % url_for('static',
-                                                 filename=form.thumbgen_filename(model.image)))
+                                                 filename='artifacts/'+form.thumbgen_filename(model.image)))
 
     column_list = ('name', 'geological_period', 'insured', 'active', 'value', 'image')
     column_formatters = {
@@ -35,4 +37,12 @@ class ArtifactView(ModelView):
         'image': form.ImageUploadField('Image',
                                        base_path=config.ARTIFACT_PATH,
                                        thumbnail_size=(100, 100, True))
+    }
+    form_widget_args = {
+        'insured': {
+            'disabled': True
+        },
+        'active': {
+            'disabled': True
+        }
     }

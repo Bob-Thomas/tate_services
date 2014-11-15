@@ -32,14 +32,14 @@ class InsuredArtifactsView(ModelView):
     }
     #can_create = False
 
-    # def on_model_change(self, form, model, is_created):
-    #     artifact = Artifact.query.filter_by(id=str(form.artifacts).split('"')[7]).first()
-    #     artifact.insured = "YES"
-    #     artifact.active = True
-    #     db.session.commit()
-    #
-    # def on_model_delete(self, model):
-    #     artifact = Artifact.query.filter_by(id=model.artifact).first()
-    #     artifact.insured = "NO"
-    #     artifact.active = False
-    #     db.session.commit()
+    def on_model_change(self, form, model, is_created):
+        artifact = Artifact.query.filter_by(id=str(form.artifacts).split('"')[7]).first()
+        artifact.insured = "PENDING"
+        artifact.active = True
+        db.session.commit()
+
+    def on_model_delete(self, model):
+        artifact = Artifact.query.filter_by(id=model.artifact).first()
+        artifact.insured = "NO"
+        artifact.active = False
+        db.session.commit()

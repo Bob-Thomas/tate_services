@@ -12,7 +12,7 @@ class Artifact(db.Model):
     geological_period = db.Column(db.Text, nullable=False)
     image = db.Column(db.String(200), nullable=False)
     value = db.Column(db.Float, nullable=False)
-    insured = db.Column(db.Enum('YES', 'NO', 'PENDING'), nullable=False, default='NO')
+    insured = db.Column(db.Enum('YES', 'NO', 'PENDING'), default='NO')
     active = db.Column(db.Boolean, nullable=False, default=False)
 
     def __unicode__(self):

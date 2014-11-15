@@ -4,6 +4,7 @@ from models.user import User
 from controllers.cms.admin import admin
 from flask.ext import login
 from flask.ext import restful
+from services.artifact_api import ArtifactApi
 from services.ticket_api import TicketApi
 
 app = Flask(__name__)
@@ -27,9 +28,11 @@ def init_login():
     def load_user(user_id):
         return db.session.query(User).get(user_id)
 
+
 init_login()
 admin.init_app(app)
 api.add_resource(TicketApi, '/ticket/order')
+api.add_resource(ArtifactApi, '/artifact/<action>/<id>')
 
 if __name__ == "__main__":
     app.debug = True

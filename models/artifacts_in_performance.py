@@ -7,3 +7,5 @@ class ArtifactsInPerformance(db.Model):
                                                    onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
     performance = db.Column(db.Integer, db.ForeignKey('performance.id',
                                                       onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
+    performances = db.relationship('Performance')
+    artifacts = db.relationship('Artifact')

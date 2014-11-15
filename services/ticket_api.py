@@ -26,7 +26,6 @@ class TicketApi(restful.Resource):
         return tickets
 
     def post(self):
-        self.ticket_controller = TicketController()
         form = request.get_json(force=True)
         for user in form['data']:
             del user['error']
