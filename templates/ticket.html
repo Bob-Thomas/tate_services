@@ -1,0 +1,23 @@
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+<body>
+<span>Naam: {{ order.information.firstName + " " + order.information.lastName }}</span>
+<span>Geboorte datum: {{ order.information.birthDate }}</span>
+<span>Leeftijd: {{ order.information.age }}</span>
+<span>Postcode: {{ order.information.zipCode }}</span>
+<span>Woonplaats: {{ order.information.residence }}</span>
+<span>OrderNummer: {{ order.information.ticketId }}</span>
+<img alt="barcode" src="data:image/png;base64,{{ order.barCode }}" width="200" height="200"/>
+
+<table>
+
+</table>
+
+
+</body>
+</html>

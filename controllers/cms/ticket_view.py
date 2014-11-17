@@ -4,13 +4,14 @@ from flask.ext import login
 import login_role
 import time
 
+
 class TicketView(ModelView):
 
     def is_accessible(self):
-        return login.current_user.is_authenticated() and login_role.check_roles(['admin', 'cashier'])
+        return login.current_user.is_authenticated() and login_role.check_roles(['admin', 'cashier', 'manager'])
 
     column_auto_select_related = True
-    column_list = ('first_name', 'last_name', 'email', 'purchase_date', 'city')
+    column_list = ('ticket_id', 'first_name', 'last_name', 'email', 'purchase_date', 'city')
     column_searchable_list = ('first_name', 'last_name', 'email')
     column_filters = ('first_name', 'last_name', 'email', 'purchase_date', 'residence', 'city', 'visit_date')
     form_excluded_columns = ('first_name', 'last_name', 'birth_date')

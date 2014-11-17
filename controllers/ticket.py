@@ -5,6 +5,7 @@ from models.ticket import Ticket
 import re
 import time
 
+
 class TicketController():
 
     barcode = None
@@ -45,7 +46,7 @@ class TicketController():
         self.barcode = BarcodeGenerator(ticket.ticket_id, ticket.first_name + "-" + ticket.last_name)
         information = {}
         if ticket:
-            information['barCode'] = self.barcode.get_base()
+            information['barCode'] = self.barcode.get_bar_code(ticket.ticket_id)
             information['information'] = self.create_json_from_ticket(ticket)
         return information
 

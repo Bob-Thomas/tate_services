@@ -2,4 +2,10 @@ import os.path as op
 
 STATIC_FILES = op.join(op.dirname(__file__), 'files')
 ARTIFACT_PATH = op.join(STATIC_FILES, 'artifacts')
-QR_PATH = op.join(STATIC_FILES, 'bar_codes')
+QR_PATH = op.join(STATIC_FILES, 'barCodes')
+PDF_PATH = op.join(STATIC_FILES, 'pdf')
+MAILGUN_AUTH = {
+    "key": "key-6lahuht78l8jrinjkai1gfdmbamgsxx2",
+    "domain": "tate.bmthomas.nl",
+    "smtp": "tate <postmaster@tate.bmthomas.nl>"
+}
