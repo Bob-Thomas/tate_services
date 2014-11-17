@@ -6,17 +6,25 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 <body>
-<span>Naam: {{ order.information.firstName + " " + order.information.lastName }}</span>
-<span>Geboorte datum: {{ order.information.birthDate }}</span>
-<span>Leeftijd: {{ order.information.age }}</span>
-<span>Postcode: {{ order.information.zipCode }}</span>
-<span>Woonplaats: {{ order.information.residence }}</span>
-<span>OrderNummer: {{ order.information.ticketId }}</span>
-<img alt="barcode" src="data:image/png;base64,{{ order.barCode }}" width="200" height="200"/>
 
-<table>
+<div class="content-container">
+  <header class="content-header">Ticket informatie</header>
+  <section class="ticket-view">
+    <article class="ticket" style="background-image:url(data:image/jpg;base64,{{order.background}});">
+      <header><h1>Darwin museum</h1></header>
+      <div class="order-information">
+        <span>Naam: {{order.information.firstName + " " + order.information.lastName}}</span>
+        <span>Geboorte datum: {{order.information.birthDate}}</span>
+        <span>Leeftijd: {{order.information.age}}</span>
+        <span>Postcode:  {{order.information.zipCode}}</span>
+        <span>Woonplaats:   {{order.information.residence}}</span>
+        <span>OrderNummer: {{order.information.ticketId}}</span>
+      </div>
+      <img alt="barcode" src="data:image/png;base64,{{order.barCode}}" width="200" height="200"/>
+    </article>
+  </section>
+</div>
 
-</table>
 
 
 </body>

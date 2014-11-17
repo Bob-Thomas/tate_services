@@ -1,4 +1,5 @@
 from flask import jsonify
+from controllers.artifact import ArtifactController
 from controllers.barcode_generator import BarcodeGenerator
 from models.database import db
 from models.ticket import Ticket
@@ -46,6 +47,7 @@ class TicketController():
         self.barcode = BarcodeGenerator(ticket.ticket_id, ticket.first_name + "-" + ticket.last_name)
         information = {}
         if ticket:
+            information['background'] = ArtifactController.get_base_64_artifact()
             information['barCode'] = self.barcode.get_bar_code(ticket.ticket_id)
             information['information'] = self.create_json_from_ticket(ticket)
         return information

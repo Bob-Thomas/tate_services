@@ -29,7 +29,7 @@ db.session.add(Insurer(name="Nick", email="smartcat007@hotmail.com", company="ni
 db.session.add(Insurer(name="Jim", email="smartcat007@hotmail.com", company="jimmysoft"))
 
 db.session.add(Artifact(name='Leeuw', reason="Zag er prachtig uit in goede staat", geological_period="Krijt", value='2900.30', image='leeuw.jpg', insured="YES", active=True))
-db.session.add(Artifact(name='Hond', reason="Zag er prachtig uit in goede staat", geological_period="Krijt", value='2900.30', image='hond.png', insured="YES", active=True))
+db.session.add(Artifact(name='Hond', reason="Zag er prachtig uit in goede staat", geological_period="Krijt", value='2900.30', image='hond.jpg', insured="YES", active=True))
 db.session.add(Artifact(name='Baksteen', reason="Zag er prachtig uit in goede staat", geological_period="Krijt", value='2900.30', image='baksteen.jpg', insured="YES", active=True))
 db.session.add(Artifact(name='HomoErectus', reason="Zag er prachtig uit in goede staat", geological_period="Krijt", value='2900.30', image='homo-erectus.jpg', insured="PENDING", active=True))
 db.session.add(Artifact(name='Kiwi', reason="Zag er prachtig uit in goede staat", geological_period="Krijt", value='2900.30', image='kiwi.jpg', insured="PENDING", active=True))

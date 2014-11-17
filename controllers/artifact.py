@@ -1,15 +1,17 @@
+from sqlalchemy import func
+import config
 from models.database import db
 from models.artifact import Artifact
 from models.insurer import Insurer
 from models.quotation import Quotation
 from models.request import Request
-
+from models.insured_artifacts import InsuredArtifacts
 
 
 class ArtifactController():
 
     @staticmethod
-    def insure_artifact( artifact_id):
+    def insure_artifact(artifact_id):
         artifact = Artifact.query.filter_by(id=artifact_id).first()
         insurers = Insurer.query.all()
         if artifact:
@@ -32,6 +34,19 @@ class ArtifactController():
                 print "artifact insurance requested"
                 artifact.insured = "PENDING"
                 db.session.commit()
-
         else:
             print 'no artifact'
+
+    @staticmethod
+    def get_random_artifact():
+        return Artifact.query.order_by(func.rand()).first()
+
+
+
+    @staticmethod
+    def get_base_64_artifact():
+        artifact = ArtifactController.get_random_artifact()
+        with open(config.ARTIFACT_PATH+"/"+artifact.image, "rb") as f:
+            data = f.read()
+        return data.encode("base64")
+
