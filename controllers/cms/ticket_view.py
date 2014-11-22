@@ -1,12 +1,12 @@
-from flask.ext.admin.contrib.sqla import ModelView
-from wtforms import Form, BooleanField, StringField, validators, PasswordField, SelectField
-from flask.ext import login
-import login_role
 import time
+
+from flask.ext.admin.contrib.sqla import ModelView
+from flask.ext import login
+
+import login_role
 
 
 class TicketView(ModelView):
-
     def is_accessible(self):
         return login.current_user.is_authenticated() and login_role.check_roles(['admin', 'cashier', 'manager'])
 

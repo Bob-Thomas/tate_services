@@ -8,8 +8,8 @@ class Performance(db.Model):
     starting_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
     # def __init__(self, name=None, information=None):
-    #     self.name = name
-    #     self.information = information
+    # self.name = name
+    # self.information = information
 
     def __unicode__(self):
         return self.name

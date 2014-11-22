@@ -1,4 +1,3 @@
-from sqlalchemy.orm import class_mapper
 from database import db
 
 
@@ -17,9 +16,9 @@ class Ticket(db.Model):
     paid = db.Column(db.Boolean, default=False)
 
     # def __init__(self, first_name, last_name, birth_date, postal_code, residence, price, _date):
-    #     self.first_name = first_name
-    #     self.last_name = last_name
-    #     self.birth_date = birth_date
+    # self.first_name = first_name
+    # self.last_name = last_name
+    # self.birth_date = birth_date
     #     self.postal_code = postal_code
     #     self.residence = residence
     #     self.price = price

@@ -1,7 +1,9 @@
-from sqlalchemy.event import listens_for
-from database import db
 from os import path as op
 import os
+
+from sqlalchemy.event import listens_for
+
+from database import db
 import config
 
 

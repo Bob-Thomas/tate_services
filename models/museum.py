@@ -6,7 +6,7 @@ class Museum(db.Model):
     name = db.Column(db.String(80), nullable=False)
 
     # def __init__(self, name=None):
-    #     self.name = name
+    # self.name = name
 
     def __unicode__(self):
         return self.name

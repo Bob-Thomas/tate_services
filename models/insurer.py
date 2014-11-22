@@ -8,8 +8,8 @@ class Insurer(db.Model):
     company = db.Column(db.String(200), nullable=False)
     artifacts = db.relation('InsuredArtifacts')
     # def __init__(self, name=None, email=None):
-    #     self.name = name
-    #     self.email = email
+    # self.name = name
+    # self.email = email
 
     def __unicode__(self):
         return self.company

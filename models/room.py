@@ -7,8 +7,8 @@ class Room(db.Model):
     content = db.Column(db.Text, nullable=False)
 
     # def __init__(self, name=None, content=None):
-    #     self.name = name
-    #     self.content = content
+    # self.name = name
+    # self.content = content
 
     def __unicode__(self):
         return self.name

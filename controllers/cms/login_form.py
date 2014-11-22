@@ -1,7 +1,7 @@
-from werkzeug.security import check_password_hash
-from wtforms import form
 from wtforms import form, fields, validators
+
 from models.database import db
+
 from models.user import User
 
 
@@ -17,8 +17,8 @@ class LoginForm(form.Form):
 
         # we're comparing the plaintext pw with the the hash from the db
         if not user.password == self.password.data:
-        # to compare plain text passwords use
-        # if user.password != self.password.data:
+            # to compare plain text passwords use
+            # if user.password != self.password.data:
             raise validators.ValidationError('Invalid password')
 
     def get_user(self):

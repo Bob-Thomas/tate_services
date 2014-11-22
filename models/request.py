@@ -10,8 +10,8 @@ class Request(db.Model):
                                                    onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
 
     # def __init__(self, information=None, artifact=None):
-    #     self.information = information
-    #     self.artifact = artifact
+    # self.information = information
+    # self.artifact = artifact
 
     def __unicode__(self):
         return self.id

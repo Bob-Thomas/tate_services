@@ -7,11 +7,11 @@ class Quotation(db.Model):
     artifact = db.Column(db.Integer, db.ForeignKey('artifact.id',
                                                    onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
     request = db.Column(db.Integer, db.ForeignKey('request.id',
-                                                 onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
+                                                  onupdate='RESTRICT', ondelete='CASCADE'), nullable=False)
     price = db.Column(db.Float, nullable=False)
     # def __init__(self, information=None, artifact=None):
-    #     self.information = information
-    #     self.artifact = artifact
+    # self.information = information
+    # self.artifact = artifact
 
     def __unicode__(self):
         return self.id

@@ -1,5 +1,6 @@
-from database import db
 from werkzeug import security
+
+from database import db
 
 
 class User(db.Model):
@@ -11,7 +12,7 @@ class User(db.Model):
     groups = db.relationship('UserGroups')
     activated = db.Column(db.Boolean)
 
-        # Flask-Login integration
+    # Flask-Login integration
     def is_authenticated(self):
         return True
 
@@ -31,9 +32,9 @@ class User(db.Model):
         return self.user_id
 
     # def __init__(self, email, password, firstname, lastname):
-    #     self.email = email
-    #     self.password = security.generate_password_hash(password, method='pbkdf2:sha256:2000', salt_length=8)
-    #     self.firstname = firstname
+    # self.email = email
+    # self.password = security.generate_password_hash(password, method='pbkdf2:sha256:2000', salt_length=8)
+    # self.firstname = firstname
     #     self.lastname = lastname
     #     self.activated = False
 

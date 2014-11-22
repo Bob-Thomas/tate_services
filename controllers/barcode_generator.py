@@ -1,8 +1,10 @@
 import platform
-import qrcode
 import time
-import config
 import hashlib
+
+import qrcode
+
+import config
 from models.ticket import Ticket
 
 
@@ -28,10 +30,11 @@ class BarcodeGenerator():
         self.name = config.QR_PATH + divider + name + "-" + self.date + "-" + str(order)
         self.hasher.update(name)
         self.hash = self.hasher.hexdigest()
-        self.qr.add_data('http://tate.bmthomas.nl/ticket/'+str(self.hash) + "ebo" + str(order) + "la" + str(self.hash))
+        self.qr.add_data(
+            'http://tate.bmthomas.nl/ticket/' + str(self.hash) + "ebo" + str(order) + "la" + str(self.hash))
         self.img = self.qr.make_image()
         print self.img
-        self.img.save(self.name+'.png')
+        self.img.save(self.name + '.png')
         self.qr.clear()
 
     def get_file_name(self):
@@ -41,7 +44,7 @@ class BarcodeGenerator():
         return str(self.hash)
 
     def get_base(self):
-        with open(self.get_file_name()+".png", "rb") as f:
+        with open(self.get_file_name() + ".png", "rb") as f:
             data = f.read()
             return data.encode("base64")
 
@@ -55,8 +58,9 @@ class BarcodeGenerator():
         ticket = Ticket.query.filter_by(ticket_id=ticket_id).first()
         if ticket:
             name = ticket.first_name + "-" + ticket.last_name
-            file_name = config.QR_PATH + divider + name + "-" + ticket.purchase_date.strftime("%d-%m-%Y") + "-" + str(ticket.ticket_id)
-            with open(file_name+".png", "rb") as f:
+            file_name = config.QR_PATH + divider + name + "-" + ticket.purchase_date.strftime("%d-%m-%Y") + "-" + str(
+                ticket.ticket_id)
+            with open(file_name + ".png", "rb") as f:
                 data = f.read()
                 return data.encode("base64")
         else:

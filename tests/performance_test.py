@@ -12,12 +12,13 @@ class PerformanceTest(unittest.TestCase):
                                   starting_date="2016-01-30", end_date="2017-01-30")
         db.session.add(performance)
         db.session.commit()
-        #retrieve new performance
+        # retrieve new performance
         new_performance = Performance.query.filter_by(id=performance.id).first()
         self.assertIsNotNone(new_performance, "no new performance added")
 
         db.session.delete(performance)
         db.session.commit()
+
 
 if __name__ == '__main__':
     unittest.main()

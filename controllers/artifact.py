@@ -1,15 +1,14 @@
 from sqlalchemy import func
+
 import config
 from models.database import db
 from models.artifact import Artifact
 from models.insurer import Insurer
 from models.quotation import Quotation
 from models.request import Request
-from models.insured_artifacts import InsuredArtifacts
 
 
 class ArtifactController():
-
     @staticmethod
     def insure_artifact(artifact_id):
         artifact = Artifact.query.filter_by(id=artifact_id).first()
@@ -29,7 +28,9 @@ class ArtifactController():
                 print insurers[1].name + " answered with lowest price 100"
                 print "creating quotation"
                 request = Request.query.filter_by(insurer=insurers[1].id).first()
-                db.session.add(Quotation(information="Ik ga graag akkoord voor de prijs van 100 euro", artifact=artifact.id, request=request.id, price=100.00))
+                db.session.add(
+                    Quotation(information="Ik ga graag akkoord voor de prijs van 100 euro", artifact=artifact.id,
+                              request=request.id, price=100.00))
                 db.session.commit()
                 print "artifact insurance requested"
                 artifact.insured = "PENDING"
@@ -42,11 +43,11 @@ class ArtifactController():
         return Artifact.query.order_by(func.rand()).first()
 
 
-
     @staticmethod
     def get_base_64_artifact():
         artifact = ArtifactController.get_random_artifact()
-        with open(config.ARTIFACT_PATH+"/"+artifact.image, "rb") as f:
+        print artifact.image
+        with open(config.ARTIFACT_PATH + "/" + artifact.image, "rb") as f:
             data = f.read()
         return data.encode("base64")
 

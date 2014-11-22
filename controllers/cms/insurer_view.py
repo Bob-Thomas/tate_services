@@ -1,7 +1,4 @@
-from models.database import db
-from models.insurer import Insurer
 from flask.ext.admin.contrib.sqla import ModelView
-from custom_filters import MyBobFilter
 from flask.ext import login
 
 

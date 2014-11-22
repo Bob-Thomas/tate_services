@@ -1,14 +1,13 @@
-from flask import jsonify
+import re
+import time
+
 from controllers.artifact import ArtifactController
 from controllers.barcode_generator import BarcodeGenerator
 from models.database import db
 from models.ticket import Ticket
-import re
-import time
 
 
 class TicketController():
-
     barcode = None
 
     orders = []
@@ -24,23 +23,23 @@ class TicketController():
             return 0.0
 
     def create_ticket_from_json(self, json=None):
-            birth_date = str(time.strptime(json['birthDate'], "%Y-%m-%d")[:3])
-            birth_date = re.sub(',\s', '-', birth_date)
-            birth_date = re.sub('(\(|\))', '', birth_date)
-            ticket = Ticket()
-            ticket.first_name = json['firstName']
-            ticket.last_name = json['lastName']
-            ticket.birth_date = birth_date
-            ticket.email = json['email']
-            ticket.postal_code = json['zipCode'].replace(' ', '')
-            ticket.residence = json['residence']
-            ticket.city = json['city']
-            ticket.purchase_date = time.strftime("%Y-%m-%d")
-            ticket.paid = True
-            ticket.price = self.get_ticket_price(ticket)
-            db.session.add(ticket)
-            db.session.commit()
-            self.orders.append(ticket.ticket_id)
+        birth_date = str(time.strptime(json['birthDate'], "%Y-%m-%d")[:3])
+        birth_date = re.sub(',\s', '-', birth_date)
+        birth_date = re.sub('(\(|\))', '', birth_date)
+        ticket = Ticket()
+        ticket.first_name = json['firstName']
+        ticket.last_name = json['lastName']
+        ticket.birth_date = birth_date
+        ticket.email = json['email']
+        ticket.postal_code = json['zipCode'].replace(' ', '')
+        ticket.residence = json['residence']
+        ticket.city = json['city']
+        ticket.purchase_date = time.strftime("%Y-%m-%d")
+        ticket.paid = True
+        ticket.price = self.get_ticket_price(ticket)
+        db.session.add(ticket)
+        db.session.commit()
+        self.orders.append(ticket.ticket_id)
 
     def get_ticket_information(self, order_id):
         ticket = Ticket.query.filter_by(ticket_id=order_id).first()

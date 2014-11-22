@@ -2,12 +2,12 @@ from flask import url_for, request
 from flask.ext.admin import helpers, expose
 from werkzeug.utils import redirect
 from flask.ext import login
-from login_form import LoginForm
 from flask.ext import admin
+
+from login_form import LoginForm
 
 
 class CustomAdminIndexView(admin.AdminIndexView):
-
     @expose('/')
     def index(self):
         if not login.current_user.is_authenticated():
