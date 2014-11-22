@@ -39,15 +39,32 @@ class ArtifactController():
             print 'no artifact'
 
     @staticmethod
+    def get_artifact_in_json(id):
+        artifact = Artifact.query.filter_by(id=id).first()
+        json = {}
+        if artifact:
+            json['id'] = id
+            json['name'] = artifact.name
+            json['reason'] = artifact.reason
+            json['geologicalPeriod'] = artifact.geological_period
+            json['image'] = ArtifactController.get_base_64_artifact(id)
+            json['value'] = artifact.value
+            json['insured'] = artifact.insured
+            json['active'] = artifact.active
+            json['locationFound'] = artifact.location_found
+            json['dateFound'] = artifact.date_found.strftime('%d-%m-%Y')
+        return json
+
+    @staticmethod
     def get_random_artifact():
         return Artifact.query.order_by(func.rand()).first()
 
 
     @staticmethod
-    def get_base_64_artifact():
-        artifact = ArtifactController.get_random_artifact()
-        print artifact.image
-        with open(config.ARTIFACT_PATH + config.DIVIDER + artifact.image, "rb") as f:
-            data = f.read()
-        return data.encode("base64")
+    def get_base_64_artifact(id):
+        artifact = Artifact.query.filter_by(id=id).first()
+        if artifact:
+            with open(config.ARTIFACT_PATH + config.DIVIDER + artifact.image, "rb") as f:
+                data = f.read()
+            return data.encode("base64")
 

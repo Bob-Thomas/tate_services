@@ -1,6 +1,6 @@
 from flask import Flask
 from flask.ext import restful
-from flask.ext.restful import reqparse
+from flask.ext.restful import reqparse, abort
 from flask import Flask, request
 import time
 from controllers.barcode_generator import BarcodeGenerator
@@ -40,7 +40,7 @@ class TicketApi(restful.Resource):
                     return "no ticket found"
             else:
                 return "no id given"
-        return 404
+        return abort(404)
 
     def post(self):
         form = request.get_json(force=True)
