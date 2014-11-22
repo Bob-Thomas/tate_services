@@ -1,4 +1,5 @@
 import os.path as op
+import platform
 
 STATIC_FILES = op.join(op.dirname(__file__), 'files')
 ARTIFACT_PATH = op.join(STATIC_FILES, 'artifacts')
@@ -9,3 +10,6 @@ MAILGUN_AUTH = {
     "domain": "tate.bmthomas.nl",
     "smtp": "tate <postmaster@tate.bmthomas.nl>"
 }
+DIVIDER = '/'
+if 'linux' != platform.system().lower():
+    DIVIDER = '\\'

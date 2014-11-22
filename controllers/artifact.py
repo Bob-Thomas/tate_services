@@ -47,7 +47,7 @@ class ArtifactController():
     def get_base_64_artifact():
         artifact = ArtifactController.get_random_artifact()
         print artifact.image
-        with open(config.ARTIFACT_PATH + "/" + artifact.image, "rb") as f:
+        with open(config.ARTIFACT_PATH + config.DIVIDER + artifact.image, "rb") as f:
             data = f.read()
         return data.encode("base64")
 

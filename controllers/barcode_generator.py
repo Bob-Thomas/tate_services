@@ -22,12 +22,8 @@ class BarcodeGenerator():
     linux = 'linux' == platform.system().lower()
 
     def __init__(self, order, name):
-        if self.linux:
-            divider = '/'
-        else:
-            divider = '\\'
         print config.QR_PATH
-        self.name = config.QR_PATH + divider + name + "-" + self.date + "-" + str(order)
+        self.name = config.QR_PATH + config.DIVIDER + name + "-" + self.date + "-" + str(order)
         self.hasher.update(name)
         self.hash = self.hasher.hexdigest()
         self.qr.add_data(
@@ -50,15 +46,10 @@ class BarcodeGenerator():
 
     @staticmethod
     def get_bar_code(ticket_id):
-        linux = 'linux' == platform.system().lower()
-        if linux:
-            divider = '/'
-        else:
-            divider = '\\'
         ticket = Ticket.query.filter_by(ticket_id=ticket_id).first()
         if ticket:
             name = ticket.first_name + "-" + ticket.last_name
-            file_name = config.QR_PATH + divider + name + "-" + ticket.purchase_date.strftime("%d-%m-%Y") + "-" + str(
+            file_name = config.QR_PATH + config.DIVIDER + name + "-" + ticket.purchase_date.strftime("%d-%m-%Y") + "-" + str(
                 ticket.ticket_id)
             with open(file_name + ".png", "rb") as f:
                 data = f.read()
