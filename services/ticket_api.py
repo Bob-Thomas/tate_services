@@ -24,7 +24,6 @@ class TicketApi(restful.Resource):
         if action == 'order':
             tickets = []
             orders = self.ticket_controller.orders
-            print orders
             for ticket in orders:
                 tickets.append(self.ticket_controller.get_ticket_information(ticket))
                 self.mailer.send_ticket(self.ticket_controller.get_ticket_information(ticket))

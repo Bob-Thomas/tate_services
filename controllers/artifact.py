@@ -41,7 +41,6 @@ class ArtifactController():
     @staticmethod
     def get_artifact_in_json(id):
         artifact = Artifact.query.filter_by(id=id).first()
-        print artifact.name
         json = {}
         if artifact:
             json['id'] = id
