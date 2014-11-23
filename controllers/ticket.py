@@ -66,6 +66,3 @@ class TicketController():
         json['age'] = int(time.strftime("%Y")) - int(ticket.birth_date.strftime("%Y"))
 
         return json
-
-    def __init__(self):
-        print "wee"

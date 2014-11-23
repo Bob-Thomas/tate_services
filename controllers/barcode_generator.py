@@ -22,7 +22,6 @@ class BarcodeGenerator():
     linux = 'linux' == platform.system().lower()
 
     def __init__(self, order, name):
-        print config.QR_PATH
         self.name = config.QR_PATH + config.DIVIDER + name + "-" + self.date + "-" + str(order)
         self.hasher.update(str(order))
         self.hash = self.hasher.hexdigest()

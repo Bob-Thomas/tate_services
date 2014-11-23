@@ -10,5 +10,4 @@ def create_pdf(pdf_data, file_name):
     pdf = open(path, 'wb')
     pisa.CreatePDF(StringIO(pdf_data.encode('utf-8')), pdf)
     pdf.close()
-    print pdf
     return path

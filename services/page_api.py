@@ -22,7 +22,3 @@ class PageApi(restful.Resource):
             for page in pages:
                 page_json.append(self.controller.page_to_json(page))
             return page_json
-
-
-    def post(self):
-        print "post"

@@ -17,7 +17,6 @@ class ArtifactApi(restful.Resource):
     ticket_controller = TicketController()
 
     def get(self, action=None, artifact_id=None):
-        print "called"
         if artifact_id:
             return ArtifactController.get_artifact_in_json(artifact_id)
         else:

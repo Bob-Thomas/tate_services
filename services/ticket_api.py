@@ -21,7 +21,6 @@ class TicketApi(restful.Resource):
     mailer = Mail()
 
     def get(self, action=None, id=None):
-        print action
         if action == 'order':
             tickets = []
             orders = self.ticket_controller.orders
@@ -47,7 +46,4 @@ class TicketApi(restful.Resource):
         for user in form['data']:
             del user['error']
             self.ticket_controller.create_ticket_from_json(user)
-        print form['data']
-
-
         return "whoopy"

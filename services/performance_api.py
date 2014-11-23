@@ -21,7 +21,3 @@ class PerformanceApi(restful.Resource):
             for performance in performances:
                 performance_json.append(self.controller.performance_to_json(performance))
             return performance_json
-
-
-    def post(self):
-        print "post"
