@@ -6,6 +6,7 @@ ARTIFACT_PATH = op.join(STATIC_FILES, 'artifacts')
 QR_PATH = op.join(STATIC_FILES, 'barCodes')
 PDF_PATH = op.join(STATIC_FILES, 'pdf')
 LOG_PATH = op.join(STATIC_FILES, 'logs')
+PERFORMANCE_PATH = op.join(STATIC_FILES, 'performances')
 MAILGUN_AUTH = {
     "key": "key-6lahuht78l8jrinjkai1gfdmbamgsxx2",
     "domain": "tate.bmthomas.nl",

@@ -5,7 +5,9 @@ from controllers.cms.admin import admin
 from flask.ext import login
 from flask.ext import restful
 from services.artifact_api import ArtifactApi
+from services.page_api import PageApi
 from services.ticket_api import TicketApi
+from services.performance_api import PerformanceApi
 from controllers.artifact import ArtifactController
 app = Flask(__name__)
 app.secret_key = 'changethis'
@@ -57,6 +59,8 @@ api.add_resource(TicketApi, '/ticket/<action>/<id>',
                  '/ticket/<action>/',
                  '/ticket/order')
 api.add_resource(ArtifactApi, '/artifacts/<artifact_id>', '/artifacts/')
+api.add_resource(PerformanceApi, '/performances/<performance_id>', '/performances/')
+api.add_resource(PageApi, '/pages/<page_id>', '/pages/')
 
 if __name__ == "__main__":
     app.debug = True

@@ -49,8 +49,8 @@ class BarcodeGenerator():
         ticket = Ticket.query.filter_by(ticket_id=ticket_id).first()
         if ticket:
             name = ticket.first_name + "-" + ticket.last_name
-            file_name = config.QR_PATH + config.DIVIDER + name + "-" + ticket.purchase_date.strftime("%d-%m-%Y") + "-" + str(
-                ticket.ticket_id)
+            file_name = config.QR_PATH + config.DIVIDER + name + "-" + ticket.purchase_date.strftime(
+                "%d-%m-%Y") + "-" + str(ticket.ticket_id)
             with open(file_name + ".png", "rb") as f:
                 data = f.read()
                 return data.encode("base64")

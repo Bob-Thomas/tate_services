@@ -7,9 +7,9 @@ import config
 import login_role
 
 
-class PerformanceView(ModelView):
+class PageView(ModelView):
     def is_accessible(self):
-        return login.current_user.is_authenticated() and login_role.check_roles(['admin', 'performancemaster'])
+        return login.current_user.is_authenticated() and login_role.check_roles(['admin', 'pages'])
 
     column_auto_select_related = True
 

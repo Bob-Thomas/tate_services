@@ -28,6 +28,7 @@ class ArtifactView(ModelView):
                                                  filename='artifacts/' + form.thumbgen_filename(model.image)))
 
     column_list = ('name', 'geological_period', 'insured', 'active', 'value', 'image')
+
     column_formatters = {
         'image': list_thumbnail
     }
