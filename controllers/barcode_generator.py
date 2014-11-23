@@ -24,10 +24,10 @@ class BarcodeGenerator():
     def __init__(self, order, name):
         print config.QR_PATH
         self.name = config.QR_PATH + config.DIVIDER + name + "-" + self.date + "-" + str(order)
-        self.hasher.update(name)
+        self.hasher.update(str(order))
         self.hash = self.hasher.hexdigest()
         self.qr.add_data(
-            'http://tate.bmthomas.nl/ticket/' + str(self.hash) + "ebo" + str(order) + "la" + str(self.hash))
+            'http://tate.bmthomas.nl/ticket/' + str(self.hash))
         self.img = self.qr.make_image()
         print self.img
         self.img.save(self.name + '.png')
