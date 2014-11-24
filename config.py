@@ -1,7 +1,7 @@
 import os.path as op
 import platform
 
-STATIC_FILES = op.join(op.dirname(__file__), 'files')
+STATIC_FILES = op.join(op.dirname(__file__), 'static')
 ARTIFACT_PATH = op.join(STATIC_FILES, 'artifacts')
 QR_PATH = op.join(STATIC_FILES, 'barCodes')
 PDF_PATH = op.join(STATIC_FILES, 'pdf')
