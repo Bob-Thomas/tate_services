@@ -10,13 +10,15 @@ from models.request import Request
 
 class ArtifactController():
     @staticmethod
-    def insure_artifact(artifact_id):
+    def insure_artifact(artifact_id=None):
         artifact = Artifact.query.filter_by(id=artifact_id).first()
         insurers = Insurer.query.all()
         if artifact:
             if artifact.insured == "YES":
+                print 'already insured'
                 return 'already insured'
             elif artifact.insured == "PENDING":
+                print 'already pending'
                 return 'already pending'
             elif artifact.insured == "NO":
                 print "insuring artifact"
