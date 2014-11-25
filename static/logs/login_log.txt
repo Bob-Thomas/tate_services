@@ -1,1 +1,4 @@
 user smartcat007@hotmail.com logged in at 2014-11-22 16:13:12.563000
+user manager@tate.com logged in at 2014-11-25 07:57:33.889106
+user performance@tate.com logged in at 2014-11-25 07:58:51.666962
+user smartcat007@hotmail.com logged in at 2014-11-25 08:05:34.500739

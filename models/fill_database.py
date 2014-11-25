@@ -58,6 +58,7 @@ db.session.add(User(email='manager@tate.com', password='test', first_name='Woute
 
 db.session.add(UserGroups(group="Admin", user_id="1"))
 db.session.add(UserGroups(group="PerformanceMaster", user_id="2"))
+db.session.add(UserGroups(group="Manager", user_id="3"))
 
 db.session.add(Insurer(name="Bob", email="smartcat007@hotmail.com", company="Bobisoft"))
 db.session.add(Insurer(name="Nick", email="smartcat007@hotmail.com", company="nickisoft"))

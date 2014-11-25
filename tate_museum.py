@@ -64,5 +64,5 @@ api.add_resource(PageApi, '/pages/<page_id>', '/pages/')
 
 if __name__ == "__main__":
     app.debug = True
-    app.static_folder = "files"
+    app.static_folder = "static"
     app.run()
