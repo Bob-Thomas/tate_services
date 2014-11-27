@@ -68,8 +68,8 @@ db.session.add(CashierLogin(cashier=2, password="test"))
 db.session.add(Cashier(email='cashier2@tate.com', first_name='Nick', last_name='Bout'))
 db.session.add(CashierLogin(cashier=3, password="test"))
 
-db.session.add(BlockedUser(2))
-db.session.add(BlockedUser(3))
+db.session.add(BlockedUser(user=2))
+db.session.add(BlockedUser(user=3))
 
 db.session.add(UserGroups(group="Admin", user_id="1"))
 db.session.add(UserGroups(group="PerformanceMaster", user_id="2"))
