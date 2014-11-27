@@ -1,8 +1,8 @@
-from flask.ext.admin.contrib.sqla import ModelView
+import config
 
+from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext import login
 from flask.ext.admin.form import FileUploadField
-import config
 
 import login_role
 

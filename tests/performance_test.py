@@ -8,7 +8,7 @@ from models.performance import Performance
 
 class PerformanceTest(unittest.TestCase):
     def test_create_performance(self):
-        #create fake performance data
+        # create fake performance data
         performance = Performance(name="test voorstelling", information="dit is een test voorstelling",
                                   starting_date="2016-01-30", end_date="2017-01-30")
         #add it to the database

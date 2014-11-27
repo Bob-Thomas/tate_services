@@ -14,7 +14,7 @@ import unittest
 
 class ArtifactInsureTest(unittest.TestCase):
     def setUp(self):
-        #setup mock artifact
+        # setup mock artifact
         self.artifact = Artifact(name='Leeuw', reason="Zag er prachtig uit in goede staat", geological_period="Krijt",
                                  value='2900.30', image='leeuw.png', insured="NO", active=True)
         #add artifact to the database
@@ -24,7 +24,7 @@ class ArtifactInsureTest(unittest.TestCase):
         self.controller = InsuranceController()
 
     def tearDown(self):
-        #cleanup test artifact
+        # cleanup test artifact
         db.session.delete(self.artifact)
         db.session.commit()
 
@@ -33,7 +33,7 @@ class ArtifactInsureTest(unittest.TestCase):
         print ""
         print "Test full insurance"
         print "-------------------------------------"
-        #request insurance for artifact
+        # request insurance for artifact
         #call class method to request insurance
         ArtifactController.insure_artifact(self.artifact.id)
         #check if insurance is pending
@@ -57,14 +57,14 @@ class ArtifactInsureTest(unittest.TestCase):
         print ""
         print "Test pending insurance"
         print "-------------------------------------"
-        #request insurance for artifact
+        # request insurance for artifact
         ArtifactController.insure_artifact(self.artifact.id)
         #make sure its pending
         self.assertEquals(self.artifact.insured, "PENDING", "not requested")
         print "END pending insurance"
 
     def test_insure_insured_artifact(self):
-        #test if you can insure an artifact twice
+        # test if you can insure an artifact twice
         print ""
         print "Test insuring the same artifact twice"
         print "-------------------------------------"

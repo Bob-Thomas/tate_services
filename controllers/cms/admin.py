@@ -1,12 +1,15 @@
+import config
+
 from flask.ext.admin import Admin
 
-import config
 from controllers.cms.adminIndex import CustomAdminIndexView
 from controllers.cms.aritfacts_performance_view import ArtifactsInPerformanceView
+from controllers.cms.blocked_user_view import BlockedUserView
 from controllers.cms.file_admin import CustomFileAdmin
 from controllers.cms.page_view import PageView
 from controllers.cms.performance_view import PerformanceView
 from models.artifacts_in_performance import ArtifactsInPerformance
+from models.blocked_user import BlockedUser
 from models.database import db
 from models.page import Page
 from models.performance import Performance
@@ -28,6 +31,7 @@ admin = Admin(name='Tate admin panel', index_view=CustomAdminIndexView(), base_t
 
 admin.add_view(UserView(User, db.session, category='User'))
 admin.add_view(UserGroupsView(UserGroups, db.session, category='User'))
+admin.add_view(BlockedUserView(BlockedUser, db.session, category='User'))
 admin.add_view(TicketView(Ticket, db.session))
 admin.add_view(ArtifactView(Artifact, db.session, category='Artifacts'))
 admin.add_view(InsurerView(Insurer, db.session))

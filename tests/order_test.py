@@ -1,16 +1,15 @@
 __author__ = 'bob'
 
 import unittest
+
 from models.ticket import Ticket
-from models.insured_artifacts import InsuredArtifacts
 from models.database import db
 from controllers.ticket import TicketController
-from controllers.barcode_generator import BarcodeGenerator
 
 
 class CreateTicketTest(unittest.TestCase):
     def setUp(self):
-        #This is a json init variable its an empty dictionairy
+        # This is a json init variable its an empty dictionairy
         self.json = {}
         # set the json variable firstname to test
         self.json['firstName'] = "test"
@@ -44,14 +43,14 @@ class CreateTicketTest(unittest.TestCase):
         self.ticket = Ticket.query.filter_by(ticket_id=self.controller.orders[0]).first()
         # check if the ticket exist
         self.assertTrue(self.ticket, "order creation failed")
-        #delete ticket
+        # delete ticket
         self.controller.orders.remove(self.ticket.ticket_id)
         # remove order
         db.session.delete(self.ticket)
         db.session.commit()
 
     def test_get_information(self):
-        #create ticket from test json variable
+        # create ticket from test json variable
         self.controller.create_ticket_from_json(self.json)
         # set the ticket to the first order result
         self.ticket = Ticket.query.filter_by(ticket_id=self.controller.orders[0]).first()

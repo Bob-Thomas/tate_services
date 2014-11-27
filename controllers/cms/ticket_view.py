@@ -3,12 +3,10 @@ import time
 from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext import login
 
-import login_role
-
 
 class TicketView(ModelView):
     def is_accessible(self):
-        return login.current_user.is_authenticated() and login_role.check_roles(['admin', 'cashier', 'manager'])
+        return login.current_user.is_authenticated()
 
     column_auto_select_related = True
     column_list = ('ticket_id', 'first_name', 'last_name', 'email', 'purchase_date', 'city')

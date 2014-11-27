@@ -35,7 +35,7 @@ class User(db.Model):
     # self.email = email
     # self.password = security.generate_password_hash(password, method='pbkdf2:sha256:2000', salt_length=8)
     # self.firstname = firstname
-    #     self.lastname = lastname
+    # self.lastname = lastname
     #     self.activated = False
 
     def check_password(self, password):

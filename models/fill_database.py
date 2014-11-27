@@ -1,4 +1,9 @@
 # coding=utf-8
+import random
+from datetime import timedelta
+from datetime import date
+from random import randint
+
 from database import db
 from artifact import Artifact
 from user import User
@@ -7,15 +12,9 @@ from insurer import Insurer
 from insured_artifacts import InsuredArtifacts
 from performance import Performance
 from artifacts_in_performance import ArtifactsInPerformance
-from ticket import Ticket
-from quotation import Quotation
-from request import Request
-from agreement import Agreement
+from cashier import Cashier
+from cashier_login import CashierLogin
 from page import Page
-import random
-from datetime import timedelta
-from datetime import date
-from random import randint
 
 
 def random_date(start, end):
@@ -55,10 +54,22 @@ db.create_all()
 db.session.add(User(email='smartcat007@hotmail.com', password='test', first_name='Bob', last_name='Thomas'))
 db.session.add(User(email='performance@tate.com', password='test', first_name='Bob', last_name='Thomas'))
 db.session.add(User(email='manager@tate.com', password='test', first_name='Wouter', last_name='Dijkstra'))
+# db.session.add(User(email='cashier@tate.com', password='test', first_name='verkoper', last_name='Dijkstra'))
+
+
+db.session.add(Cashier(email='cashier@tate.com', first_name='Wouter', last_name='Dijkstra'))
+db.session.add(CashierLogin(cashier=1, password="test"))
+
+db.session.add(Cashier(email='cashier1@tate.com', first_name='Bob', last_name='Thomas'))
+db.session.add(CashierLogin(cashier=2, password="test"))
+
+db.session.add(Cashier(email='cashier2@tate.com', first_name='Nick', last_name='Bout'))
+db.session.add(CashierLogin(cashier=3, password="test"))
 
 db.session.add(UserGroups(group="Admin", user_id="1"))
 db.session.add(UserGroups(group="PerformanceMaster", user_id="2"))
 db.session.add(UserGroups(group="Manager", user_id="3"))
+# db.session.add(UserGroups(group="Cashier", user_id="4"))
 
 db.session.add(Insurer(name="Bob", email="smartcat007@hotmail.com", company="Bobisoft"))
 db.session.add(Insurer(name="Nick", email="smartcat007@hotmail.com", company="nickisoft"))

@@ -1,10 +1,10 @@
 from os import path as op
 import os
+import config
 
 from sqlalchemy.event import listens_for
 
 from database import db
-import config
 
 
 class Artifact(db.Model):
@@ -28,7 +28,7 @@ def del_file(mapper, connection, target):
     if target.image:
         try:
             os.remove(op.join(config.ARTIFACT_PATH, target.image))
-            os.remove(op.join(config.ARTIFACT_PATH, target.image[:3]+'_thumb,jpg'))
+            os.remove(op.join(config.ARTIFACT_PATH, target.image[:3] + '_thumb,jpg'))
         except OSError:
             # Don't care if was not deleted because it does not exist
             pass

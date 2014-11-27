@@ -1,4 +1,5 @@
 import os.path as op
+import config
 
 from flask import url_for
 from markupsafe import Markup
@@ -6,8 +7,6 @@ from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin import form
 from werkzeug.utils import secure_filename
 from flask.ext import login
-
-import config
 
 
 def prefix_name(obj, file_data):
