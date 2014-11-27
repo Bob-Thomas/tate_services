@@ -27,6 +27,7 @@ class LoginForm(form.Form):
             cashier_controller = CashierController(user['data'])
             login_information = CashierLogin.query.filter_by(cashier=user['data'].user_id).first()
             if cashier_controller.is_user_blocked() or user['data'].tries >= 3:
+                cashier_controller.block_user()
                 raise validators.ValidationError("Dit acccount is geblokeerd")
             if not login_information.password == self.password.data:
                 cashier_controller.faulty_login()

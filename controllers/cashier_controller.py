@@ -14,6 +14,12 @@ class CashierController():
         blocked = BlockedUser.query.filter_by(user=self.user.user_id).first()
         return blocked
 
+    def block_user(self):
+        if not BlockedUser.query.filter_by(user=self.user.user_id).first():
+            #if the user logged in to much add it to the block
+            db.session.add(BlockedUser(user=self.user.user_id))
+            db.session.commit()
+
     def faulty_login(self):
         #if the user logs in with the wrong password write it to the log and add a strike to the account
         self.logger.write_to_log(self.user.email, "ONGELIDGE LOGIN")

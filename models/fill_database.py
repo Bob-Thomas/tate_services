@@ -14,6 +14,7 @@ from performance import Performance
 from artifacts_in_performance import ArtifactsInPerformance
 from cashier import Cashier
 from cashier_login import CashierLogin
+from blocked_user import BlockedUser
 from page import Page
 
 
