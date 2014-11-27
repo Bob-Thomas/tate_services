@@ -59,7 +59,7 @@ db.session.add(User(email='manager@tate.com', password='test', first_name='Woute
 # db.session.add(User(email='cashier@tate.com', password='test', first_name='verkoper', last_name='Dijkstra'))
 
 
-db.session.add(Cashier(email='cashier1@tate.com', first_name='Wouter', last_name='Dijkstra'))
+db.session.add(Cashier(email='cashiertest@tate.com', first_name='Wouter', last_name='Dijkstra'))
 db.session.add(CashierLogin(cashier=1, password="test"))
 
 db.session.add(Cashier(email='cashier1@tate.com', first_name='Bob', last_name='Thomas'))
