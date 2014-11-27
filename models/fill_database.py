@@ -53,12 +53,13 @@ db.drop_all()
 db.create_all()
 
 db.session.add(User(email='smartcat007@hotmail.com', password='test', first_name='Bob', last_name='Thomas'))
+db.session.add(User(email='admin@tate.com', password='test', first_name='Bob', last_name='Thomas'))
 db.session.add(User(email='performance@tate.com', password='test', first_name='Bob', last_name='Thomas'))
 db.session.add(User(email='manager@tate.com', password='test', first_name='Wouter', last_name='Dijkstra'))
 # db.session.add(User(email='cashier@tate.com', password='test', first_name='verkoper', last_name='Dijkstra'))
 
 
-db.session.add(Cashier(email='cashier@tate.com', first_name='Wouter', last_name='Dijkstra'))
+db.session.add(Cashier(email='cashier1@tate.com', first_name='Wouter', last_name='Dijkstra'))
 db.session.add(CashierLogin(cashier=1, password="test"))
 
 db.session.add(Cashier(email='cashier1@tate.com', first_name='Bob', last_name='Thomas'))
@@ -66,6 +67,9 @@ db.session.add(CashierLogin(cashier=2, password="test"))
 
 db.session.add(Cashier(email='cashier2@tate.com', first_name='Nick', last_name='Bout'))
 db.session.add(CashierLogin(cashier=3, password="test"))
+
+db.session.add(BlockedUser(2))
+db.session.add(BlockedUser(3))
 
 db.session.add(UserGroups(group="Admin", user_id="1"))
 db.session.add(UserGroups(group="PerformanceMaster", user_id="2"))
