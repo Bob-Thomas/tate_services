@@ -76,6 +76,6 @@ api.add_resource(PerformanceApi, '/performances/<performance_id>', '/performance
 api.add_resource(PageApi, '/pages/<page_id>', '/pages/')
 
 if __name__ == "__main__":
-    app.debug = True
+    #app.debug = True
     app.static_folder = "static"
-    app.run()
+    app.run(host='0.0.0.0')
