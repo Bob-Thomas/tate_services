@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template
 from models.database import db
 from models.user import User
@@ -9,10 +10,22 @@ from services.page_api import PageApi
 from services.ticket_api import TicketApi
 from services.performance_api import PerformanceApi
 from controllers.artifact import ArtifactController
+import config
 app = Flask(__name__)
 app.secret_key = 'changethis'
 api = restful.Api(app)
 
+if not os.path.exists(config.ARTIFACT_PATH):
+    os.makedirs(config.ARTIFACT_PATH)
+
+if not os.path.exists(config.LOG_PATH):
+    os.makedirs(config.LOG_PATH)
+
+if not os.path.exists(config.PDF_PATH):
+    os.makedirs(config.PDF_PATH)
+
+if not os.path.exists(config.QR_PATH):
+    os.makedirs(config.QR_PATH)
 
 @app.after_request
 def after_request(response):
